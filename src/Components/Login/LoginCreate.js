@@ -1,0 +1,49 @@
+import React from 'react';
+import useForm from '../../Hooks/useForm';
+import { USER_POST } from '../../Services/api';
+import Button from '../Form/Button/Button';
+import Input from '../Form/Input/Input';
+import { UserContext } from '../../UserContext';
+import useFetch from '../../Hooks/useFetch';
+import Error from '../Helper/Error';
+
+const LoginCreate = () => {
+  const username = useForm();
+  const email = useForm('email');
+  const password = useForm();
+
+  const { userLogin } = React.useContext(UserContext);
+  const { loading, error, request } = useFetch();
+
+  const handleCreateUser = async (event) => {
+    event.preventDefault();
+    const { url, options } = USER_POST({
+      username: username.value,
+      email: email.value,
+      password: password.value,
+    });
+
+    const { response } = await request(url, options);
+    if (response.ok) userLogin(username.value, password.value);
+    console.log(response);
+  };
+
+  return (
+    <section className="animeLeft">
+      <h1 className="title">Cadastro</h1>
+      <form onSubmit={handleCreateUser}>
+        <Input label="Usuario" type="text" name="username" {...username} />
+        <Input label="Email" type="email" name="email" {...email} />
+        <Input label="Senha" type="password" name="password" {...password} />
+        {loading ? (
+          <Button disabled>Cadastrando...</Button>
+        ) : (
+          <Button>Cadastrar</Button>
+        )}
+        <Error error={error} />
+      </form>
+    </section>
+  );
+};
+
+export default LoginCreate;
