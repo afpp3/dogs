@@ -10,6 +10,10 @@ const validationTypes = {
     message:
       'A senha deve conter o mínimo de 8 caracteres, pelo menos uma letra, um numero e um caractere especial',
   },
+  number: {
+    regex: /^\d+$/,
+    message: 'Utilize apenas números',
+  },
 };
 
 const useForm = (type) => {
