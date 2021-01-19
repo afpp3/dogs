@@ -9,6 +9,7 @@ import ProtectedRoute from './Components/Helper/ProtectedRoute';
 import User from './Components/User/User';
 
 import './App.css';
+import Photo from './Components/Photo/Photo';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="login/*" element={<Login />} />
             <ProtectedRoute path="conta/*" element={<User />} />
+            <Route path="photo/:id" element={<Photo />} />
           </Routes>
           <Footer />
         </UserStorage>
