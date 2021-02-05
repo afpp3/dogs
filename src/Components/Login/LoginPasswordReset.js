@@ -7,6 +7,7 @@ import useForm from '../../Hooks/useForm';
 import useFetch from '../../Hooks/useFetch';
 import Error from '../Helper/Error';
 import { PASSWORD_RESET } from '../../Services/api';
+import Head from '../Head/Head';
 
 const LoginPasswordReset = () => {
   const [login, setLogin] = React.useState('');
@@ -38,6 +39,11 @@ const LoginPasswordReset = () => {
 
   return (
     <div>
+      <Head
+        title="Resetar senha"
+        description="Resetar sua senha no site dogs"
+      />
+
       <h1 className="title">Resetar Senha</h1>
       <form onSubmit={handleSubmit}>
         <Input
