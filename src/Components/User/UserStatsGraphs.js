@@ -8,7 +8,7 @@ const UserStatsGraphs = ({ data }) => {
   const [total, setTotal] = React.useState(0);
 
   React.useEffect(() => {
-    if (data) {
+    if (data.length) {
       const graphData = data.map((item) => {
         return {
           x: item.title,

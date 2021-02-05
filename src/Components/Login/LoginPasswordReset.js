@@ -38,7 +38,7 @@ const LoginPasswordReset = () => {
   };
 
   return (
-    <div>
+    <section className="animeLeft">
       <Head
         title="Resetar senha"
         description="Resetar sua senha no site dogs"
@@ -59,7 +59,7 @@ const LoginPasswordReset = () => {
         )}
       </form>
       <Error error={error} />
-    </div>
+    </section>
   );
 };
 
